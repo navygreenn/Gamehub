@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Creature selector</title>
+    <style>
+        #blob {
+            background-color: yellow;
+        }
+        #yoo {
+            background-color: green;
+        }
+        #stick {
+            background-color: rgb(222, 82, 6);
+            width: 145px;
+        }
+        #broc {
+            background-color: rgb(55, 137, 68);
+        }
+        #polydino {
+            background-color: lightblue;
+        }
+        #triangle {
+            background-color: purple;
+        }
+        #dev {
+            font-size: 16px;
+            background-color: transparent;
+            border: none;
+            padding: 0;
+            margin: 0;
+            margin-left: 10px;
+            cursor: pointer;
+            font-weight: normal;
+        }
+        #toms {
+            background-color: rgb(201, 3, 3);
+            width: 100px;
+        }
+
+
+        button {
+            border-radius: 6px;
+            border-width: 3px;
+            border-color: black;
+            font-size: 24px;
+            margin: 5px;
+            height: 40px;
+            width: 100px;
+        }
+        #tom {
+            background-color: #d60808;
+            width: 125px;
+        }
+        #corn {
+            background-color: rgb(208, 208, 31);
+        }
+        #broco {
+            background-color: darkgreen;
+        }
+        /* Poisonous Potato button styling: light brown with a thin lime-green streak */
+                #poison {
+                        background-color: #d2b48c; /* base light brown */
+                        color: #000;
+                        border: 2px solid #7a5a33;
+                        border-radius: 8px;
+                        /* make the button larger to accommodate text without changing font-size */
+                        min-width: 160px;
+                        padding: 14px 18px; /* bigger vertical padding so text fully fits */
+                        box-sizing: border-box;
+                        white-space: normal; /* allow wrapping so height can expand */
+                        line-height: 1.15;
+                        display: inline-block;
+                        height: auto !important;
+
+                        /* full-width squiggly lime streak using inline SVG background
+                             Includes a main squiggle and several thinner streaks for a natural look */
+                        background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100' preserveAspectRatio='none'%3E%3Cpath d='M0,60 C30,20 60,80 90,60 C120,40 150,90 180,60 C195,45 200,55 200,55' fill='none' stroke='%23a8ff00' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8,18 C32,28 64,12 98,24' fill='none' stroke='%23a8ff00' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M140,82 C156,68 172,76 188,72' fill='none' stroke='%23a8ff00' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M28,88 C48,72 72,86 92,80' fill='none' stroke='%23a8ff00' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+                        background-repeat: no-repeat;
+                        background-position: center center;
+                        background-size: 100% 100%;
+                }
+        /* Container for the small vegetable thumbnails */
+        #veg-thumbs {
+            margin-top: 8px;
+            display: flex;
+            flex-wrap: wrap; /* allow thumbnails to wrap to new rows */
+            align-items: center;
+            gap: 5px; /* spacing of 5px between small images */
+        }
+        .veg-thumb {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Creature Selection</h1>
+    <button id="blob" class="img-btn" data-image="blob.jpeg">blob</button>
+    <button id="yoo" class="img-btn" data-image="yoo_eel.jpeg">Yoo eel</button>
+    <button id="stick" class="img-btn" data-image="sf.jpeg">Stick figure</button>
+    <button id="broc" class="img-btn" data-image="froggit.jpeg">froggit</button>
+    <button id="polydino" class="img-btn" data-image="poly.jpg">Polydino</button>
+    <button id="triangle" class="img-btn" data-image="tri.jpg">triangle</button>
+    <button id="toms" class="img-btn" data-image="random">random</button>
+    <br />
+    <img id="displayImage" src="" style="display:none; max-width:360px; margin-top:12px;" alt="Selected creature" />
+    <br />
+
+    
+    <br />
+    
+
+
+
+
+
+
+
+
+
+
+    
+<script src="../js code/index js/index.js"></script>
+</body>
+</html>                     
