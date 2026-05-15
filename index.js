@@ -41,7 +41,7 @@ function init() {
                     video.style.display = "block";
                 } else {
                     video.style.display = 'none';
-                    image.src = `imgSrc`;
+                    image.src = imgSrc ;
                     image.style.display = "block";
                 }
             });
