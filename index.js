@@ -38,18 +38,18 @@ function init() {
                 if (imgSrc.endsWith('.mov') || imgSrc.endsWith('.mp4')) {
                     image.style.display = 'none';
                     video.src = `../images/${imgSrc}`;
-                    video.style.display = "block";
+                    video.src = imgSrc;
                 } else {
                     video.style.display = 'none';
                     image.src = imgSrc ;
-                    image.style.display = "block";
+                    image.src = imgSrc;
                 }
             });
         });
     }
 }
 
-// 2. Keep your Dev Alignment Logic (This is what you likely want to save!)
+// 2. Keep Dev Alignment Logic
 function alignDevHorizWithH1() {
     const dev = document.getElementById('dev');
     const h1 = document.querySelector('h1');
