@@ -28,6 +28,8 @@ function init() {
     if (image) {
         buttons.forEach(button => {
             button.addEventListener("click", () => {
+                buttons.forEach(button => {
+            button.addEventListener("click", () => {
                 let imgSrc = button.dataset.image;
 
                 if (imgSrc === "random") {
@@ -38,15 +40,14 @@ function init() {
                 if (imgSrc.endsWith('.mov') || imgSrc.endsWith('.mp4')) {
                     image.style.display = 'none';
                     video.src = imgSrc;
+                    video.style.display = "block";
                 } else {
                     video.style.display = 'none';
                     image.src = imgSrc;
+                    image.style.display = "block";
                 }
             });
         });
-    }
-}
-
 // 2. Keep Dev Alignment Logic
 function alignDevHorizWithH1() {
     const dev = document.getElementById('dev');
