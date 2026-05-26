@@ -37,7 +37,6 @@ function init() {
                 // Handle the main creature display (Main.html logic)
                 if (imgSrc.endsWith('.mov') || imgSrc.endsWith('.mp4')) {
                     image.style.display = 'none';
-                    video.src = `../images/${imgSrc}`;
                     video.src = imgSrc;
                 } else {
                     video.style.display = 'none';
