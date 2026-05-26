@@ -41,7 +41,6 @@ function init() {
                     video.src = imgSrc;
                 } else {
                     video.style.display = 'none';
-                    image.src = imgSrc ;
                     image.src = imgSrc;
                 }
             });
