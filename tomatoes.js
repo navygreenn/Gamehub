@@ -70,7 +70,7 @@
                 thumb.className = 'veg-thumb';
                 thumb.alt = button.id + ' thumbnail';
                 // Path fix: goes up from 'html code' to 'moi game', then into 'images'
-                thumb.src = `../images/${imgSrc}`;
+                thumb.src = `https://navygreenn.github.io/Gamehub/${imgSrc}`;
                 thumbsContainer.appendChild(thumb);
             }
         });
