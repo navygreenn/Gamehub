@@ -41,11 +41,11 @@ function init() {
                   
 if (imgSrc.endsWith('.mov') || imgSrc.endsWith('.mp4')) {
     image.style.display = 'none';
-    video.src = '/' + 'Gamehub' + '/' + imgSrc;
+    video.src = '/Gamehub/'+ imgSrc;
     video.style.display = "block";
 } else {
     video.style.display = 'none';
-    image.src = '/' + 'Gamehub' + '/' + imgSrc;
+    image.src = '/Gamehub/'+ imgSrc;
     image.style.display = "block";
 }
                     video.src = imgSrc;
