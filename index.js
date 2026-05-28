@@ -40,11 +40,11 @@ function init() {
          
 if (imgSrc.endsWith('.mov') || imgSrc.endsWith('.mp4')) {
     image.style.display = 'none';
-    video.src = imgSrc; 
+    video.src = 'https://navygreenn.github.io/Gamehub/${imgSrc}'; 
     video.style.display = "block";
 } else {
     video.style.display = 'none';
-    image.src = imgSrc; 
+    image.src = 'https://navygreenn.github.io/Gamehub/${imgSrc}'; 
     image.style.display = "block";
 }
                     video.src = imgSrc;
