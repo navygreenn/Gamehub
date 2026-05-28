@@ -36,15 +36,15 @@ function init() {
                     imgSrc = imagesList[Math.floor(Math.random() * imagesList.length)];
                 }
 
-                // Handle the main creature display (Main.html logic)
          
+// Handle the main creature display (Main.html logic)
 if (imgSrc.endsWith('.mov') || imgSrc.endsWith('.mp4')) {
     image.style.display = 'none';
-    video.src = 'https://navygreenn.github.io/Gamehub/${imgSrc}'; 
+    video.src = `https://navygreenn.github.io/Gamehub/${imgSrc}`; // Absolute link!
     video.style.display = "block";
 } else {
     video.style.display = 'none';
-    image.src = 'https://navygreenn.github.io/Gamehub/${imgSrc}'; 
+    image.src = `https://navygreenn.github.io/Gamehub/${imgSrc}`; // Absolute link!
     image.style.display = "block";
 }
                     video.src = imgSrc;
