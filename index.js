@@ -38,7 +38,16 @@ function init() {
 
                 // Handle the main creature display (Main.html logic)
                 if (imgSrc.endsWith('.mov') || imgSrc.endsWith('.mp4')) {
-                    image.style.display = 'none';
+                  
+if (imgSrc.endsWith('.mov') || imgSrc.endsWith('.mp4')) {
+    image.style.display = 'none';
+    video.src = '/' + 'your-repository-name' + '/' + imgSrc;
+    video.style.display = "block";
+} else {
+    video.style.display = 'none';
+    image.src = '/' + 'your-repository-name' + '/' + imgSrc;
+    image.style.display = "block";
+}
                     video.src = imgSrc;
                     video.style.display = "block";
                 } else {
