@@ -105,15 +105,14 @@
         <div id="article-body"></div>
         <img id="article-image" class="article-image" src="" alt="" style="display:none;">
     </div>
-
-    <script>
-        // database of articles.  stories right here!
+    
+<script>
+        // Your database of articles. You will add your stories right here!
         const wikiData = [
             {
                 title: "The Blob",
                 keywords: "blob first creature 2025 monster slime organism",
-                image: "blob.jpeg", // Just name your file here!
-                // HTML tags are completely allowed inside this string!
+                image: "blob.jpeg", 
                 body: `
                     <p>The <strong>Blob</strong> was the very first recorded anomaly discovered in the deep sectors during early 2025.</p>
                     <p>It acts as a single-celled community, swallowing surrounding radiation to grow. Investigators warn against direct physical contact.</p>
@@ -136,30 +135,37 @@
         const articleView = document.getElementById('article-view');
 
         // Advanced Search: Splits user input by spaces so word order doesn't matter
-searchBar.addEventListener('input', (e) => {
-    const searchTerm = e.target.value.toLowerCase().trim();
-    previewList.innerHTML = ''; 
+        searchBar.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase().trim();
+            previewList.innerHTML = ''; // Clear prior results
 
-    if (searchTerm === '') return;
+            // If the search bar is completely empty, stop here and show nothing
+            if (searchTerm === '') return;
 
-    // Split what the user typed into an array of separate words
-    const searchWords = searchTerm.split(' ');
+            // Split by spaces, but filter out any accidental double spaces
+            const searchWords = searchTerm.split(' ').filter(word => word !== '');
 
-    wikiData.forEach(article => {
-        const searchableText = (article.title + ' ' + article.keywords).toLowerCase();
-        
-        // Check if EVERY single word the user typed is found in the article text
-        const isMatch = searchWords.every(word => searchableText.includes(word));
+            wikiData.forEach(article => {
+                // Combine the title and keywords into one searchable text string
+                const searchableText = (article.title + ' ' + article.keywords).toLowerCase();
+                
+                // Check if EVERY single word the user typed is found in the article text
+                const isMatch = searchWords.every(word => searchableText.includes(word));
 
-        if (isMatch) {
-            const card = document.createElement('div');
-            card.className = 'preview-card';
-            card.innerHTML = `<h3>${article.title}</h3>`;
-            card.addEventListener('click', () => openArticle(article));
-            previewList.appendChild(card);
-        }
-    });
-});
+                if (isMatch) {
+                    // Create a clickable preview card
+                    const card = document.createElement('div');
+                    card.className = 'preview-card';
+                    card.innerHTML = `<h3>${article.title}</h3>`;
+                    
+                    // Click handler to open the specific article
+                    card.addEventListener('click', () => {
+                        openArticle(article);
+                    });
+
+                    previewList.appendChild(card);
+                }
+            });
         });
 
         // Switch to Article Screen and update details
@@ -172,7 +178,7 @@ searchBar.addEventListener('input', (e) => {
 
             const imgElement = document.getElementById('article-image');
             if (article.image) {
-                imgElement.src = article.image; // Safe flat path matching repo
+                imgElement.src = article.image; 
                 imgElement.style.display = 'block';
             } else {
                 imgElement.style.display = 'none';
@@ -185,5 +191,6 @@ searchBar.addEventListener('input', (e) => {
             searchView.style.display = 'block';
         }
     </script>
+    
 </body>
 </html>
