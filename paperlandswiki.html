@@ -132,33 +132,31 @@
         const searchView = document.getElementById('search-view');
         const articleView = document.getElementById('article-view');
 
-        // Watch the search box dynamically as you type
-        searchBar.addEventListener('input', (e) => {
-            const searchTerm = e.target.value.toLowerCase().trim();
-            previewList.innerHTML = ''; // Clear prior results
+        // Advanced Search: Splits user input by spaces so word order doesn't matter
+searchBar.addEventListener('input', (e) => {
+    const searchTerm = e.target.value.toLowerCase().trim();
+    previewList.innerHTML = ''; 
 
-            // If empty, don't show anything
-            if (searchTerm === '') return;
+    if (searchTerm === '') return;
 
-            // Search algorithm: Matches title OR hidden keywords ONLY
-            wikiData.forEach(article => {
-                const titleMatch = article.title.toLowerCase().includes(searchTerm);
-                const keywordMatch = article.keywords.toLowerCase().includes(searchTerm);
+    // Split what the user typed into an array of separate words
+    const searchWords = searchTerm.split(' ');
 
-                if (titleMatch || keywordMatch) {
-                    // Create a clickable preview card
-                    const card = document.createElement('div');
-                    card.className = 'preview-card';
-                    card.innerHTML = `<h3>${article.title}</h3>`;
-                    
-                    // Click handler to open the specific article
-                    card.addEventListener('click', () => {
-                        openArticle(article);
-                    });
+    wikiData.forEach(article => {
+        const searchableText = (article.title + ' ' + article.keywords).toLowerCase();
+        
+        // Check if EVERY single word the user typed is found in the article text
+        const isMatch = searchWords.every(word => searchableText.includes(word));
 
-                    previewList.appendChild(card);
-                }
-            });
+        if (isMatch) {
+            const card = document.createElement('div');
+            card.className = 'preview-card';
+            card.innerHTML = `<h3>${article.title}</h3>`;
+            card.addEventListener('click', () => openArticle(article));
+            previewList.appendChild(card);
+        }
+    });
+});
         });
 
         // Switch to Article Screen and update details
