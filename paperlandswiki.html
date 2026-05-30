@@ -1,6 +1,188 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Building Wiki</title>
+    <style>
+        /* Simple & clean layouts */
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
 
+        .search-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
 
-  
+        #search-bar {
+            width: 80%;
+            padding: 12px 20px;
+            font-size: 18px;
+            border: 2px solid #ccc;
+            border-radius: 25px;
+            outline: none;
+        }
+
+        /* Preview Cards Container */
+        #preview-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        .preview-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            cursor: pointer;
+            border: 1px solid #eee;
+        }
+
+        .preview-card:hover {
+            border-color: #007BFF;
+        }
+
+        .preview-card h3 {
+            margin: 0;
+            color: #007BFF;
+        }
+
+        /* Full Article View Layout */
+        #article-view {
+            display: none; /* Hidden by default */
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .back-btn {
+            background: #666;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        .back-btn:hover {
+            background: #444;
+        }
+
+        .article-image {
+            max-width: 100%;
+            height: auto;
+            margin-top: 15px;
+            border-radius: 4px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="search-view">
+        <div class="search-section">
+            <h1>World Archive</h1>
+            <input type="text" id="search-bar" placeholder="Search the archive (e.g., blob, creature)...">
+        </div>
+        <div id="preview-list"></div>
+    </div>
+
+    <div id="article-view">
+        <button class="back-btn" onclick="showSearchView()">← Back to Search</button>
+        <h1 id="article-title"></h1>
+        <div id="article-body"></div>
+        <img id="article-image" class="article-image" src="" alt="" style="display:none;">
+    </div>
+
+    <script>
+        // Your database of articles. You will add your stories right here!
+        const wikiData = [
+            {
+                title: "The Blob",
+                keywords: "blob first creature 2025 monster slime organism",
+                image: "blob.jpeg", // Just name your file here!
+                // HTML tags are completely allowed inside this string!
+                body: `
+                    <p>The <strong>Blob</strong> was the very first recorded anomaly discovered in the deep sectors during early 2025.</p>
+                    <p>It acts as a single-celled community, swallowing surrounding radiation to grow. Investigators warn against direct physical contact.</p>
+                `
+            },
+            {
+                title: "Creatures of the Deep",
+                keywords: "creature monsters ecosystem wildlife beast",
+                image: "corn.png",
+                body: `
+                    <p>The baseline classification for non-human life forms native to the sector is categorized broadly under <em>Creatures</em>.</p>
+                    <p>Most profiles show a distinct biological kinship to structural mutations found in agricultural zones.</p>
+                `
+            }
+        ];
+
+        const searchBar = document.getElementById('search-bar');
+        const previewList = document.getElementById('preview-list');
+        const searchView = document.getElementById('search-view');
+        const articleView = document.getElementById('article-view');
+
+        // Watch the search box dynamically as you type
+        searchBar.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase().trim();
+            previewList.innerHTML = ''; // Clear prior results
+
+            // If empty, don't show anything
+            if (searchTerm === '') return;
+
+            // Search algorithm: Matches title OR hidden keywords ONLY
+            wikiData.forEach(article => {
+                const titleMatch = article.title.toLowerCase().includes(searchTerm);
+                const keywordMatch = article.keywords.toLowerCase().includes(searchTerm);
+
+                if (titleMatch || keywordMatch) {
+                    // Create a clickable preview card
+                    const card = document.createElement('div');
+                    card.className = 'preview-card';
+                    card.innerHTML = `<h3>${article.title}</h3>`;
+                    
+                    // Click handler to open the specific article
+                    card.addEventListener('click', () => {
+                        openArticle(article);
+                    });
+
+                    previewList.appendChild(card);
+                }
+            });
+        });
+
+        // Switch to Article Screen and update details
+        function openArticle(article) {
+            searchView.style.display = 'none';
+            articleView.style.display = 'block';
+
+            document.getElementById('article-title').innerText = article.title;
+            document.getElementById('article-body').innerHTML = article.body;
+
+            const imgElement = document.getElementById('article-image');
+            if (article.image) {
+                imgElement.src = article.image; // Safe flat path matching repo
+                imgElement.style.display = 'block';
+            } else {
+                imgElement.style.display = 'none';
+            }
+        }
+
+        // Switch back to Main Search Screen
+        function showSearchView() {
+            articleView.style.display = 'none';
+            searchView.style.display = 'block';
+        }
+    </script>
+</body>
 </html>
